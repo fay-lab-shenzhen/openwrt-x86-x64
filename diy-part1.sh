@@ -35,5 +35,3 @@ sed -i '$a src-git openwrt-smartdns https://github.com/pymumu/openwrt-smartdns' 
 sed -i '$a src-git luci-app-smartdns https://github.com/pymumu/luci-app-smartdns' feeds.conf.default
 sed -i '$a src-git luci-theme-opentomcat https://github.com/Leo-Jo-My/luci-theme-opentomcat' feeds.conf.default
 sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-jd-dailybonus' feeds.conf.default
-
-git pull
