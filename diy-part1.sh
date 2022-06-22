@@ -11,7 +11,8 @@
 #
 
 # Uncomment a feed source
-sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+echo "diy-part1.sh start......."
+#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
@@ -35,3 +36,5 @@ sed -i '$a src-git openwrt-smartdns https://github.com/pymumu/openwrt-smartdns' 
 sed -i '$a src-git luci-app-smartdns https://github.com/pymumu/luci-app-smartdns' feeds.conf.default
 sed -i '$a src-git luci-theme-opentomcat https://github.com/Leo-Jo-My/luci-theme-opentomcat' feeds.conf.default
 sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-jd-dailybonus' feeds.conf.default
+
+echo "diy-part1.sh complete......."
