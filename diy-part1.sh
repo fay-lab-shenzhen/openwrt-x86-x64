@@ -14,13 +14,12 @@
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git AdGuardHome https://github.com/AdguardTeam/AdGuardHome' feeds.conf.default
 sed -i '$a src-git OpenAppFilter https://github.com/destan19/OpenAppFilter' feeds.conf.default
 sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git openwrt-passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-
 sed -i '$a src-git luci-app-poweroff https://github.com/esirplayground/luci-app-poweroff' feeds.conf.default
 sed -i '$a src-git autotimeset https://github.com/sirpdboy/luci-app-autotimeset' feeds.conf.default
 sed -i '$a src-git luci-app-bandwidthd https://github.com/AlexZhuo/luci-app-bandwidthd' feeds.conf.default
