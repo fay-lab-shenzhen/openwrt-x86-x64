@@ -37,4 +37,5 @@ sed -i '$a src-git luci-app-smartdns https://github.com/pymumu/luci-app-smartdns
 sed -i '$a src-git luci-theme-opentomcat https://github.com/Leo-Jo-My/luci-theme-opentomcat' feeds.conf.default
 sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-jd-dailybonus' feeds.conf.default
 
+more feeds.conf.default
 echo "diy-part1.sh complete......."
