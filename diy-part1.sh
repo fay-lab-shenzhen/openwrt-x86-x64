@@ -18,7 +18,6 @@ echo "diy-part1.sh start......."
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git OpenAppFilter https://github.com/destan19/OpenAppFilter' feeds.conf.default
-sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-jd-dailybonus' feeds.conf.default
 sed -i '$a src-git autotimeset https://github.com/sirpdboy/luci-app-autotimeset' feeds.conf.default
 
 
