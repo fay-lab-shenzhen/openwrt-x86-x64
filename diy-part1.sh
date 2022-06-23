@@ -18,13 +18,13 @@ echo "diy-part1.sh start......."
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git OpenAppFilter https://github.com/destan19/OpenAppFilter' feeds.conf.default
-sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
 sed -i '$a src-git luci-app-poweroff https://github.com/esirplayground/luci-app-poweroff' feeds.conf.default
 sed -i '$a src-git autotimeset https://github.com/sirpdboy/luci-app-autotimeset' feeds.conf.default
 sed -i '$a src-git luci-app-bandwidthd https://github.com/AlexZhuo/luci-app-bandwidthd' feeds.conf.default
 sed -i '$a src-git luci-theme-opentomcat https://github.com/Leo-Jo-My/luci-theme-opentomcat' feeds.conf.default
 sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-jd-dailybonus' feeds.conf.default
 
+#sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
 #sed -i '$a src-git AdGuardHome https://github.com/AdguardTeam/AdGuardHome' feeds.conf.default
 #sed -i '$a src-git luci-app-clash https://github.com/frainzy1477/luci-app-clash' feeds.conf.default
 #sed -i '$a src-git luci-app-aliddns https://github.com/honwen/luci-app-aliddns' feeds.conf.default
