@@ -19,7 +19,6 @@ sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 sed -i '$a src-git OpenAppFilter https://github.com/destan19/OpenAppFilter' feeds.conf.default
 sed -i '$a src-git autotimeset https://github.com/sirpdboy/luci-app-autotimeset' feeds.conf.default
-sed -i '$a src-git luci-app-bandwidthd https://github.com/AlexZhuo/luci-app-bandwidthd' feeds.conf.default
 sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-jd-dailybonus' feeds.conf.default
 
 #sed -i '$a src-git luci-theme-opentomcat https://github.com/Leo-Jo-My/luci-theme-opentomcat' feeds.conf.default
@@ -36,4 +35,8 @@ sed -i '$a src-git luci-app-jd-dailybonus https://github.com/jerrykuku/luci-app-
 #sed -i '$a src-git luci-app-smartdns https://github.com/pymumu/luci-app-smartdns' feeds.conf.default
 
 more feeds.conf.default
+
+echo "-----------------------------------"
+cat feeds.conf.default
+
 echo "diy-part1.sh complete......."
