@@ -26,7 +26,6 @@ env:
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
-  UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
@@ -44,7 +43,7 @@ jobs:
       with:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
-        tool-cache: false
+        tool-cache: true
 
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
