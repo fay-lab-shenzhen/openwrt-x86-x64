@@ -16,5 +16,5 @@
 # Add a feed source
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-sed -i '$a src-git luci-theme-argon https://github.com/jerrykuku/luci-theme-argon' feeds.conf.default
-sed -i '$a src-git luci-theme-kucat https://github.com/sirpdboy/luci-theme-kucat' feeds.conf.default
+sed -i '$a src-git luci-theme-argon https://github.com/jerrykuku/luci-theme-argon.git' feeds.conf.default
+sed -i '$a src-git luci-theme-kucat https://github.com/sirpdboy/luci-theme-kucat.git' feeds.conf.default
