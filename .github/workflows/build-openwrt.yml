@@ -89,7 +89,6 @@ jobs:
         sudo mkdir -p -m 777 /mnt/openwrt/dl /mnt/openwrt/feeds 
         ln -s /mnt/openwrt/dl /workdir/openwrt/dl
         ln -s /mnt/openwrt/feeds /workdir/openwrt/feeds
-        df -h
 
     - name: Load custom feeds
       run: |
@@ -113,15 +112,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
-    - name: cache
-      uses: stupidloud/cachewrtbuild@main
-      with:
-        ccache: 'true'
-        mixkey: ${{ env.TARGET_DEVICE_ARCH }}
-        toolchain: 'true'
-        clean: ${{github.event.inputs.clean}}
-        prefix: ${{ github.workspace }}/openwrt
         
     - name: Download package
       id: package
@@ -131,6 +121,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        df -hT
 
     - name: Compile the firmware
       id: compile
