@@ -33,32 +33,52 @@ echo "Installing sbwml qBittorrent packages..."
 echo "sbwml qBittorrent packages installed."
 
 echo "========================================"
-echo "        Verify sbwml qBittorrent"
+echo "        Verify qBittorrent Status"
 echo "========================================"
 
-echo "===== qbittorrent feed ====="
+echo
+echo "===== 1. sbwml feed source ====="
 ls -ld feeds/qbittorrent 2>/dev/null || \
     echo "ERROR: feeds/qbittorrent 不存在"
 
 echo
-echo "===== qBittorrent source ====="
-find feeds/qbittorrent -maxdepth 4 -type f -name Makefile \
-    2>/dev/null | grep -i qbittorrent || \
-    echo "ERROR: 未找到 qBittorrent Makefile"
+echo "===== 2. sbwml Makefiles ====="
+find feeds/qbittorrent -maxdepth 2 -type f -name Makefile 2>/dev/null
 
 echo
-echo "===== installed package links ====="
-ls -ld package/feeds/packages/qbittorrent 2>/dev/null || \
-    echo "qBittorrent package link 不存在"
+echo "===== 3. sbwml installed links ====="
+ls -ld package/feeds/qbittorrent/qbittorrent 2>/dev/null || \
+    echo "ERROR: qbittorrent 未安装到 package/feeds/qbittorrent/"
 
-ls -ld package/feeds/luci/luci-app-qbittorrent 2>/dev/null || \
-    echo "luci-app-qbittorrent package link 不存在"
+ls -ld package/feeds/qbittorrent/luci-app-qbittorrent 2>/dev/null || \
+    echo "ERROR: luci-app-qbittorrent 未安装到 package/feeds/qbittorrent/"
 
 echo
-echo "===== qbittorrent feed packages ====="
-./scripts/feeds list -p qbittorrent 2>/dev/null | \
-    grep -i qbittorrent || \
-    echo "WARNING: qbittorrent feed 中未找到 qBittorrent"
+echo "===== 4. sbwml feed registry ====="
+./scripts/feeds list -p qbittorrent 2>/dev/null || \
+    echo "ERROR: qbittorrent feed 无法列出"
+
+echo
+echo "===== 5. OFFICIAL cleanup check ====="
+# 关键：检查官方包是否已彻底删除
+ls -ld package/feeds/packages/qBittorrent 2>/dev/null && \
+    echo "WARNING: 官方 qBittorrent 残留！" || \
+    echo "OK: 官方 qBittorrent 已清除"
+
+ls -ld package/feeds/luci/luci-app-qbittorrent 2>/dev/null && \
+    echo "WARNING: 官方 luci-app-qbittorrent 残留！" || \
+    echo "OK: 官方 luci-app-qbittorrent 已清除"
+
+echo
+echo "===== 6. duplicate check in menuconfig ====="
+# 如果同时存在大小写两个版本，make menuconfig 会显示重复
+grep -r "qBittorrent" package/feeds/packages/ 2>/dev/null && \
+    echo "WARNING: packages feed 中发现 qBittorrent 关键字" || \
+    echo "OK: packages feed 中无 qBittorrent"
+
+grep -r "qbittorrent" package/feeds/qbittorrent/ 2>/dev/null && \
+    echo "OK: qbittorrent feed 中发现 qbittorrent 关键字" || \
+    echo "WARNING: qbittorrent feed 中无 qbittorrent"
 
 echo "Removing official ksmbd packages..."
 ./scripts/feeds uninstall ksmbd-utils || true
