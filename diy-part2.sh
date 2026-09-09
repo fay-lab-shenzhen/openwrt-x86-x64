@@ -16,15 +16,15 @@ sed -i 's/192\.168\.[0-9]\+\.1/192.168.111.1/g' package/base-files/files/bin/con
 
 echo "Removing official qBittorrent packages..."
 
-# 删除官方 qBittorrent 源文件
-rm -rf feeds/packages/net/qBittorrent
-rm -rf feeds/packages/net/qBittorrent-static
-rm -rf feeds/luci/applications/luci-app-qbittorrent
-
-# 删除官方 qBittorrent 已生成的软链接
+# 1. 先删除已生成的软链接（防止死链接）
 rm -f package/feeds/packages/qBittorrent
 rm -f package/feeds/packages/qBittorrent-static
 rm -f package/feeds/luci/luci-app-qbittorrent
+
+# 2. 再删除官方源文件
+rm -rf feeds/packages/net/qBittorrent
+rm -rf feeds/packages/net/qBittorrent-static
+rm -rf feeds/luci/applications/luci-app-qbittorrent
 
 echo "Official qBittorrent packages removed."
 
