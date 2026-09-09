@@ -55,14 +55,19 @@ echo "ksmbd feed removing completed."
 echo "===== Qt5 package config ====="
 grep -E '^CONFIG_PACKAGE_(qtbase|qttools)=' .config || true
 
+echo "===== Current qBittorrent dependencies ====="
+grep -nE 'DEPENDS|Build-Depends' package/feeds/packages/qBittorrent/Makefile 2>/dev/null || true
+
 echo "===== Packages depending on qtbase ====="
-grep -R -nE '(\+| )qtbase([/ ]|$)' package feeds 2>/dev/null || true
+grep -R -nE '(\+| )qtbase([ /]|$)' package/feeds package/lean 2>/dev/null || true
 
 echo "===== Packages depending on qttools ====="
-grep -R -nE '(\+| )qttools([/ ]|$)' package feeds 2>/dev/null || true
+grep -R -nE '(\+| )qttools([ /]|$)' package/feeds package/lean 2>/dev/null || true
 
-echo "===== Qt5 package Makefiles ====="
-find package feeds -path '*/qtbase/Makefile' -o -path '*/qttools/Makefile' 2>/dev/null
+echo "===== Current Qt5 Makefiles ====="
+find package/feeds package/lean \
+  \( -path '*/qtbase/Makefile' -o -path '*/qttools/Makefile' \) \
+  2>/dev/null
 
 echo "========================================"
 echo "        ksmbd dependency check"
