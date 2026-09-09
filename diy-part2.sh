@@ -43,6 +43,13 @@ echo "Removing official ksmbd packages..."
 ./scripts/feeds uninstall ksmbd-server || true
 ./scripts/feeds uninstall luci-app-ksmbd || true
 ./scripts/feeds uninstall luci-i18n-ksmbd-zh-cn || true
+
+rm -rf package/lean/autosamba
+rm -rf feeds/packages/net/ksmbd-tools
+rm -rf feeds/luci/applications/luci-app-ksmbd
+
+rm -f package/feeds/packages/ksmbd-tools
+rm -f package/feeds/luci/luci-app-ksmbd
 echo "ksmbd feed removing completed."
 
 echo "===== Qt5 package config ====="
