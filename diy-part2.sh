@@ -15,15 +15,15 @@
 sed -i 's/192.168.$((addr_offset++)).1/192.168.111.1/g' package/base-files/files/bin/config_generate
 sed -i 's/192\.168\.[0-9]\+\.1/192.168.111.1/g' package/base-files/files/bin/config_generate
 
-echo "Removing official qBittorrent packages..."
-./scripts/feeds uninstall qbittorrent || true
-./scripts/feeds uninstall qbittorrent-static || true
-./scripts/feeds uninstall luci-app-qbittorrent || true
+#echo "Removing official qBittorrent packages..."
+#./scripts/feeds uninstall qbittorrent || true
+#./scripts/feeds uninstall qbittorrent-static || true
+#./scripts/feeds uninstall luci-app-qbittorrent || true
 
-echo "Installing sbwml qBittorrent packages..."
-./scripts/feeds install -a -p qbittorrent
+#echo "Installing sbwml qBittorrent packages..."
+#./scripts/feeds install -a -p qbittorrent
 
-echo "qBittorrent feed replacement completed."
+#echo "qBittorrent feed replacement completed."
 
 echo "Removing official ksmbd packages..."
 ./scripts/feeds uninstall ksmbd-utils || true
