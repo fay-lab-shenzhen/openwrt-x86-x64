@@ -48,7 +48,7 @@ find feeds/qbittorrent -maxdepth 4 -type f -name Makefile \
 
 echo
 echo "===== installed package links ====="
-ls -ld package/feeds/packages/qBittorrent 2>/dev/null || \
+ls -ld package/feeds/packages/qbittorrent 2>/dev/null || \
     echo "qBittorrent package link 不存在"
 
 ls -ld package/feeds/luci/luci-app-qbittorrent 2>/dev/null || \
