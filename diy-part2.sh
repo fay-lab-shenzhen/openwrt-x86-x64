@@ -20,8 +20,13 @@ sed -i 's/192\.168\.[0-9]\+\.1/192.168.111.1/g' package/base-files/files/bin/con
 #./scripts/feeds uninstall qbittorrent-static || true
 #./scripts/feeds uninstall luci-app-qbittorrent || true
 
+# 再保险：删除官方 qBittorrent 残留链接
+rm -f package/feeds/packages/qBittorrent
+rm -f package/feeds/packages/qBittorrent-static
+rm -f package/feeds/luci/luci-app-qbittorrent
+
 #echo "Installing sbwml qBittorrent packages..."
-#./scripts/feeds install -a -p qbittorrent
+./scripts/feeds install -a -p qbittorrent
 
 #echo "qBittorrent feed replacement completed."
 
