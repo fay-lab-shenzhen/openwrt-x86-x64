@@ -116,9 +116,6 @@ ls -ld package/kernel/ksmbd 2>/dev/null && \
 echo "===== Qt5 package config ====="
 grep -E '^CONFIG_PACKAGE_(qtbase|qttools)=' .config || true
 
-echo "===== Current qBittorrent dependencies ====="
-grep -nE 'DEPENDS|Build-Depends' package/feeds/packages/qBittorrent/Makefile 2>/dev/null || true
-
 echo "===== Packages depending on qtbase ====="
 grep -R -nE '(\+| )qtbase([ /]|$)' package/feeds package/lean 2>/dev/null || true
 
