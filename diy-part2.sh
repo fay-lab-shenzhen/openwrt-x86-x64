@@ -104,37 +104,3 @@ ls -ld package/feeds/luci/luci-app-ksmbd 2>/dev/null && \
 ls -ld package/kernel/ksmbd 2>/dev/null && \
     echo "WARNING: ksmbd 内核模块残留" || echo "OK: ksmbd 内核模块已清除"
 
-echo "===== Qt5 package config ====="
-grep -E '^CONFIG_PACKAGE_(qtbase|qttools)=' .config || true
-
-echo "===== Packages depending on qtbase ====="
-grep -R -nE '(\+| )qtbase([ /]|$)' package/feeds package/lean 2>/dev/null || true
-
-echo "===== Packages depending on qttools ====="
-grep -R -nE '(\+| )qttools([ /]|$)' package/feeds package/lean 2>/dev/null || true
-
-echo "===== Current Qt5 Makefiles ====="
-find package/feeds package/lean \
-  \( -path '*/qtbase/Makefile' -o -path '*/qttools/Makefile' \) \
-  2>/dev/null
-
-echo "========================================"
-echo "        ksmbd dependency check"
-echo "========================================"
-
-echo ""
-echo "===== ksmbd related config ====="
-grep -E '^CONFIG_PACKAGE_.*ksmbd' .config || true
-
-echo ""
-echo "===== Packages depending on ksmbd ====="
-grep -R -nE 'DEPENDS.*(\+ksmbd|ksmbd)|HOST_BUILD_DEPENDS.*ksmbd|PKG_BUILD_DEPENDS.*ksmbd' \
-    package feeds 2>/dev/null || true
-
-echo ""
-echo "===== All ksmbd references ====="
-grep -R -nE 'ksmbd' package feeds 2>/dev/null | head -200 || true
-
-echo ""
-echo "========================================"
-
