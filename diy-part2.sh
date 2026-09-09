@@ -54,12 +54,7 @@ ls -ld package/feeds/qbittorrent/luci-app-qbittorrent 2>/dev/null || \
     echo "ERROR: luci-app-qbittorrent 未安装到 package/feeds/qbittorrent/"
 
 echo
-echo "===== 4. sbwml feed registry ====="
-./scripts/feeds list -p qbittorrent 2>/dev/null || \
-    echo "ERROR: qbittorrent feed 无法列出"
-
-echo
-echo "===== 5. OFFICIAL cleanup check ====="
+echo "===== 4. OFFICIAL cleanup check ====="
 # 关键：检查官方包是否已彻底删除
 ls -ld package/feeds/packages/qBittorrent 2>/dev/null && \
     echo "WARNING: 官方 qBittorrent 残留！" || \
@@ -70,7 +65,7 @@ ls -ld package/feeds/luci/luci-app-qbittorrent 2>/dev/null && \
     echo "OK: 官方 luci-app-qbittorrent 已清除"
 
 echo
-echo "===== 6. duplicate check in menuconfig ====="
+echo "===== 5. duplicate check in menuconfig ====="
 # 如果同时存在大小写两个版本，make menuconfig 会显示重复
 grep -r "qBittorrent" package/feeds/packages/ 2>/dev/null && \
     echo "WARNING: packages feed 中发现 qBittorrent 关键字" || \
@@ -84,11 +79,7 @@ echo "Removing official ksmbd packages..."
 
 # 1. 正确卸载 feed 软链接（用目录名，不是子包名）
 ./scripts/feeds uninstall ksmbd-tools || true
-./scripts/feeds uninstall ksmbd-utils || true
-./scripts/feeds uninstall kmod-fs-ksmbd || true
-./scripts/feeds uninstall ksmbd-server || true
 ./scripts/feeds uninstall luci-app-ksmbd || true
-./scripts/feeds uninstall luci-i18n-ksmbd-zh-cn || true
 
 # 2. 删除 LEDE 主仓库的 autosamba
 rm -rf package/lean/autosamba
