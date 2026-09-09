@@ -81,19 +81,37 @@ grep -r "qbittorrent" package/feeds/qbittorrent/ 2>/dev/null && \
     echo "WARNING: qbittorrent feed 中无 qbittorrent"
 
 echo "Removing official ksmbd packages..."
+
+# 1. 正确卸载 feed 软链接（用目录名，不是子包名）
+./scripts/feeds uninstall ksmbd-tools || true
 ./scripts/feeds uninstall ksmbd-utils || true
 ./scripts/feeds uninstall kmod-fs-ksmbd || true
 ./scripts/feeds uninstall ksmbd-server || true
 ./scripts/feeds uninstall luci-app-ksmbd || true
 ./scripts/feeds uninstall luci-i18n-ksmbd-zh-cn || true
 
+# 2. 删除 LEDE 主仓库的 autosamba
 rm -rf package/lean/autosamba
+
+# 3. 删除 feed 源文件（用户空间工具 + LuCI）
 rm -rf feeds/packages/net/ksmbd-tools
 rm -rf feeds/luci/applications/luci-app-ksmbd
 
+# 4. 清理可能残留的软链接（feeds uninstall 失败时的补救）
 rm -f package/feeds/packages/ksmbd-tools
 rm -f package/feeds/luci/luci-app-ksmbd
-echo "ksmbd feed removing completed."
+
+echo "ksmbd removing completed."
+
+echo "===== verify ksmbd cleanup ====="
+ls -ld package/feeds/packages/ksmbd-tools 2>/dev/null && \
+    echo "WARNING: ksmbd-tools 软链接残留" || echo "OK: ksmbd-tools 软链接已清除"
+
+ls -ld package/feeds/luci/luci-app-ksmbd 2>/dev/null && \
+    echo "WARNING: luci-app-ksmbd 软链接残留" || echo "OK: luci-app-ksmbd 软链接已清除"
+
+ls -ld package/kernel/ksmbd 2>/dev/null && \
+    echo "WARNING: ksmbd 内核模块残留" || echo "OK: ksmbd 内核模块已清除"
 
 echo "===== Qt5 package config ====="
 grep -E '^CONFIG_PACKAGE_(qtbase|qttools)=' .config || true
