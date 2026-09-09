@@ -30,12 +30,35 @@ echo "Official qBittorrent packages removed."
 
 echo "Installing sbwml qBittorrent packages..."
 ./scripts/feeds install -a -p qbittorrent
-
-echo "===== qBittorrent final links ====="
-ls -ld package/feeds/packages/qBittorrent
-ls -ld package/feeds/luci/luci-app-qbittorrent
-
 echo "sbwml qBittorrent packages installed."
+
+echo "========================================"
+echo "        Verify sbwml qBittorrent"
+echo "========================================"
+
+echo "===== qbittorrent feed ====="
+ls -ld feeds/qbittorrent 2>/dev/null || \
+    echo "ERROR: feeds/qbittorrent 不存在"
+
+echo
+echo "===== qBittorrent source ====="
+find feeds/qbittorrent -maxdepth 4 -type f -name Makefile \
+    2>/dev/null | grep -i qbittorrent || \
+    echo "ERROR: 未找到 qBittorrent Makefile"
+
+echo
+echo "===== installed package links ====="
+ls -ld package/feeds/packages/qBittorrent 2>/dev/null || \
+    echo "qBittorrent package link 不存在"
+
+ls -ld package/feeds/luci/luci-app-qbittorrent 2>/dev/null || \
+    echo "luci-app-qbittorrent package link 不存在"
+
+echo
+echo "===== qbittorrent feed packages ====="
+./scripts/feeds list -p qbittorrent 2>/dev/null | \
+    grep -i qbittorrent || \
+    echo "WARNING: qbittorrent feed 中未找到 qBittorrent"
 
 echo "Removing official ksmbd packages..."
 ./scripts/feeds uninstall ksmbd-utils || true
