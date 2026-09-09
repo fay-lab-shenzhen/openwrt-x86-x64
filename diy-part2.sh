@@ -32,8 +32,8 @@ echo "Installing sbwml qBittorrent packages..."
 ./scripts/feeds install -a -p qbittorrent
 
 echo "===== qBittorrent final links ====="
-readlink -f package/feeds/packages/qBittorrent
-readlink -f package/feeds/luci/luci-app-qbittorrent
+ls -ld package/feeds/packages/qBittorrent
+ls -ld package/feeds/luci/luci-app-qbittorrent
 
 echo "sbwml qBittorrent packages installed."
 
